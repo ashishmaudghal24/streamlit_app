@@ -88,7 +88,8 @@ def normalize_output(raw, mode_label):
 confidence = raw.get("confidence") or raw.get("score") or raw.get("prob") or None
 method = str(raw.get("method") or raw.get("mode") or method)
 
-        return answer, confidence, method
+            return answer, confidence, method
+
 
     # Plain text
     return str(raw), confidence, method
