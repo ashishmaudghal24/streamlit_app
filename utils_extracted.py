@@ -2841,7 +2841,7 @@ print("Torch:", torch.__version__)
 print("Pandas:", pd.__version__)
 print("NumPy:", np.__version__)
 
-!pip install rapidfuzz
+
 
 import os, random, time, math, re, json
 import pandas as pd
