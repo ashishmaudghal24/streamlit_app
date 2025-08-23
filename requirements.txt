@@ -1,17 +1,18 @@
-streamlit
+# Core
+streamlit==1.36.0
 
-# Hugging Face stack (pins known to install on Streamlit Cloud)
+# Hugging Face stack (CPU-friendly pins)
 transformers==4.42.4
 datasets==2.20.0
 accelerate==0.33.0
 sentencepiece==0.2.0
+protobuf<5
 
-# PyTorch CPU (stable pin)
-torch==2.2.2
+# PyTorch CPU (reliable wheel on hosted runners)
+torch==2.1.2
 
 # Utilities
 rapidfuzz==3.9.7
-protobuf<5
 pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.4.2
