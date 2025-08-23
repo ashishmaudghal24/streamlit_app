@@ -1,3 +1,11 @@
+# Keep pip tooling stable (prevents resolver/build surprises)
+pip==24.0
+setuptools<70
+wheel
+
+# Use the official PyTorch CPU wheel index
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 # Core
 streamlit==1.36.0
 
@@ -8,12 +16,18 @@ accelerate==0.33.0
 sentencepiece==0.2.0
 protobuf<5
 
-# PyTorch CPU (reliable wheel on hosted runners)
-torch==2.1.2
+# PyTorch CPU (from the extra index above)
+torch==2.1.2+cpu
 
-# Utilities
+# Utilities (pin to known-good wheels)
 rapidfuzz==3.9.7
 pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.4.2
 matplotlib==3.8.4
+
+# (Optional) pin these to avoid churn you saw in the log
+rich==14.1.0
+markdown-it-py==4.0.0
+mdurl==0.1.2
+pygments==2.19.2
