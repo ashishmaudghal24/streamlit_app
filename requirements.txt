@@ -1,7 +1,26 @@
+# Streamlit app dependencies
 streamlit
-transformers
+
+# HF + training
+transformers>=4.42
 torch
 datasets
-rapidfuzz
 accelerate
 sentencepiece
+protobuf<5
+
+# Retrieval / embeddings
+faiss-cpu
+sentence-transformers
+
+# Fuzzy matching
+rapidfuzz
+
+# Data & ML utils
+pandas
+numpy
+scikit-learn
+matplotlib
+
+# Guardrails (import guardrails)
+guardrails-ai
