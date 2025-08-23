@@ -2577,7 +2577,7 @@ if __name__ == "__main__":
 
 """2.7 Interface Development"""
 
-!pip install streamlit transformers torch faiss-cpu  # faiss optional; transformers/torch only if you want local LM gen
+pip install streamlit transformers torch faiss-cpu  # faiss optional; transformers/torch only if you want local LM gen
 
 # Cell 1 — write the Streamlit UI into app_streamlit.py
 # Adjust CODE_DIR inside the app if your modules live elsewhere.
