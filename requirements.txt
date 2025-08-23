@@ -1,2 +1,7 @@
 streamlit
+transformers
+torch
+datasets
 rapidfuzz
+accelerate
+sentencepiece
