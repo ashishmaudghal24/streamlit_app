@@ -3137,7 +3137,7 @@ DEVICE = DEVICE_OLD  # restore your original DEVICE (cuda)
 pd.DataFrame(baseline_results)
 
 # CELL 8 — Fine-tune (SFT; RAFT context included in training data)
-  from transformers import TrainingArguments, Trainer, default_data_collator, AutoModelForCausalLM
+  #from transformers import TrainingArguments, Trainer, default_data_collator, AutoModelForCausalLM
 
   EPOCHS = 2
   BSZ = 2
