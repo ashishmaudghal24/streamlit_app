@@ -33,9 +33,9 @@ def pick_candidate_function(module):
             score = 0
             if len(params) == 2:
                 score += 2
-            if any(p.name.lower() in {"query","question","text","prompt"} for p in params):
+            if any(p.name.lower() in {"query", "question", "text", "prompt"} for p in params):
                 score += 2
-            if any(p.name.lower() in {"mode","method"} for p in params):
+            if any(p.name.lower() in {"mode", "method"} for p in params):
                 score += 1
             if len(params) == 1:
                 score += 1
@@ -52,19 +52,18 @@ picked_name, picked_fn = pick_candidate_function(utils)
 if picked_name:
     st.sidebar.success(f"Auto-selected function: `{picked_name}()`")
 else:
-    st.sidebar.warning("No suitable function found. Using a dummy response. "
-                       "Add a function in utils_extracted.py that accepts (query) or (query, mode).")
+    st.sidebar.warning(
+        "No suitable function found. Using a dummy response. "
+        "Add a function in utils_extracted.py that accepts (query) or (query, mode)."
+    )
 
 def normalize_output(raw, mode_label):
-   def _normalize_output(raw, mode_label):
     """Normalize output into (answer:str, confidence:float|None, method:str)."""
     method = mode_label
     confidence = None
-    answer = None
 
     if raw is None:
         return "(No answer returned)", confidence, method
-
 
     # Tuple patterns
     if isinstance(raw, tuple):
@@ -81,15 +80,12 @@ def normalize_output(raw, mode_label):
         # Fallback: join tuple
         return " ".join(map(str, raw)), confidence, method
 
-
     # Dict patterns
     if isinstance(raw, dict):
         answer = str(raw.get("answer") or raw.get("output") or raw.get("result") or "(No 'answer' field)")
-confidence = raw.get("confidence") or raw.get("score") or raw.get("prob") or None
-method = str(raw.get("method") or raw.get("mode") or method)
-
-            return answer, confidence, method
-
+        confidence = raw.get("confidence") or raw.get("score") or raw.get("prob") or None
+        method = str(raw.get("method") or raw.get("mode") or method)
+        return answer, confidence, method
 
     # Plain text
     return str(raw), confidence, method
@@ -105,10 +101,10 @@ if st.sidebar.button("Run", type="primary"):
             else:
                 raw = picked_fn(query)
         except Exception as e:
-            raw = f\"Error calling {picked_name}(): {e}\"
+            raw = f"Error calling {picked_name}(): {e}"
     else:
         # Dummy
-        raw = f\"Demo answer for: '{query}'\" if query else \"Please enter a query.\"
+        raw = f"Demo answer for: '{query}'" if query else "Please enter a query."
 
     answer, confidence, used_method = normalize_output(raw, mode)
     elapsed = time.time() - start
@@ -119,24 +115,26 @@ if st.sidebar.button("Run", type="primary"):
     st.subheader("Details")
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric("Confidence", f\"{confidence:.2f}\" if isinstance(confidence, (int, float)) else "—")
+        st.metric("Confidence", f"{confidence:.2f}" if isinstance(confidence, (int, float)) else "—")
     with col2:
         st.metric("Method Used", used_method if used_method else "—")
     with col3:
-        st.metric("Response Time (s)", f\"{elapsed:.2f}\")
+        st.metric("Response Time (s)", f"{elapsed:.2f}")
 
 st.divider()
 with st.expander("ℹ️ How to wire up your function", expanded=False):
-    st.markdown(\"\"\"
-    Place your core logic in `utils_extracted.py` as a function with one of these signatures:
+    st.markdown(
+        """
+        Place your core logic in `utils_extracted.py` as a function with one of these signatures:
 
-    - `def my_answer_function(query: str) -> ...`
-    - `def my_answer_function(query: str, mode: str) -> ...`
+        - `def my_answer_function(query: str) -> ...`
+        - `def my_answer_function(query: str, mode: str) -> ...`
 
-    Return formats the app understands:
-    - `str` → treated as the answer
-    - `(answer: str, confidence: float, method: str)`
-    - `(answer: str, confidence: float)`
-    - `(answer: str, method: str)`
-    - `dict` with keys like `answer`, `confidence`, `method`
-    \"\"\")
+        Return formats the app understands:
+        - `str` → treated as the answer
+        - `(answer: str, confidence: float, method: str)`
+        - `(answer: str, confidence: float)`
+        - `(answer: str, method: str)`
+        - `dict` with keys like `answer`, `confidence`, `method`
+        """
+    )
