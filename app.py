@@ -84,9 +84,10 @@ def normalize_output(raw, mode_label):
 
     # Dict patterns
     if isinstance(raw, dict):
-        answer = str(raw.get(\"answer\") or raw.get(\"output\") or raw.get(\"result\") or \"(No 'answer' field)\")
-        confidence = raw.get(\"confidence\") or raw.get(\"score\") or raw.get(\"prob\") or None
-        method = str(raw.get(\"method\") or raw.get(\"mode\") or method)
+        answer = str(raw.get("answer") or raw.get("output") or raw.get("result") or "(No 'answer' field)")
+confidence = raw.get("confidence") or raw.get("score") or raw.get("prob") or None
+method = str(raw.get("method") or raw.get("mode") or method)
+
         return answer, confidence, method
 
     # Plain text
