@@ -56,7 +56,8 @@ else:
                        "Add a function in utils_extracted.py that accepts (query) or (query, mode).")
 
 def normalize_output(raw, mode_label):
-    \"\"\"Normalize output into (answer:str, confidence:float|None, method:str).\"\"\"
+   def _normalize_output(raw, mode_label):
+    """Normalize output into (answer:str, confidence:float|None, method:str)."""
     method = mode_label
     confidence = None
     answer = None
