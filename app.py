@@ -79,7 +79,8 @@ def normalize_output(raw, mode_label):
                 method = str(maybe)
             return str(answer), confidence, method
         # Fallback: join tuple
-        return \" \".join(map(str, raw)), confidence, method
+        return " ".join(map(str, raw)), confidence, method
+
 
     # Dict patterns
     if isinstance(raw, dict):
