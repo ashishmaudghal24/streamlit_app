@@ -63,7 +63,8 @@ def normalize_output(raw, mode_label):
     answer = None
 
     if raw is None:
-        return \"(No answer returned)\", confidence, method
+        return "(No answer returned)", confidence, method
+
 
     # Tuple patterns
     if isinstance(raw, tuple):
