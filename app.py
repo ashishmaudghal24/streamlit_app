@@ -122,7 +122,7 @@ if st.sidebar.button("Run", type="primary"):
         st.metric("Response Time (s)", f"{elapsed:.2f}")
 
 st.divider()
-with st.expander("ℹ️ How to wire up your function", expanded=False):
+with st.expander("Answer", expanded=False):
     st.markdown(
         """
         Place your core logic in `utils_extracted.py` as a function with one of these signatures:
