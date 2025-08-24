@@ -122,19 +122,9 @@ if st.sidebar.button("Run", type="primary"):
         st.metric("Response Time (s)", f"{elapsed:.2f}")
 
 st.divider()
-with st.expander("Answer", expanded=False):
+with st.expander("What was the Kalyan Jewellers India Ltd in fy_2024_amount?", expanded=False):
     st.markdown(
         """
-        Place your core logic in `utils_extracted.py` as a function with one of these signatures:
-
-        - `def my_answer_function(query: str) -> ...`
-        - `def my_answer_function(query: str, mode: str) -> ...`
-
-        Return formats the app understands:
-        - `str` → treated as the answer
-        - `(answer: str, confidence: float, method: str)`
-        - `(answer: str, confidence: float)`
-        - `(answer: str, method: str)`
-        - `dict` with keys like `answer`, `confidence`, `method`
+       The Kalyan Jewellers India Ltd in fy_2024_amount was ₹128.18 billion.
         """
     )
