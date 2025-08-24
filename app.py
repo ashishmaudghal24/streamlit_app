@@ -5,7 +5,7 @@ import importlib
 import streamlit as st
 
 st.set_page_config(page_title="Notebook → Streamlit", layout="wide")
-st.title("📒 Notebook ➜ 📺 Streamlit App")
+st.title("Group no - 59")
 
 st.sidebar.header("Controls")
 query = st.sidebar.text_input("Enter your query")
