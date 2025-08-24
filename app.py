@@ -122,9 +122,9 @@ if st.sidebar.button("Run", type="primary"):
         st.metric("Response Time (s)", f"{elapsed:.2f}")
 
 st.divider()
-with st.expander("What was the Kalyan Jewellers India Ltd in fy_2023_amount?", expanded=False):
+with st.expander("Balance Sheet - What was the Kalyan Jewellers India Ltd in fy_2023_amount?", expanded=False):
     st.markdown(
         """
-       The Kalyan Jewellers India Ltd in fy_2023_amount was ₹107.13 billion.
+       TThe Kalyan Jewellers India Ltd in fy_2023_amount was ₹63.69 billion.
         """
     )
